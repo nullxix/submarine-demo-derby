@@ -35,6 +35,7 @@ shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true
+zoom = Vector2( 0.4, 0.4 )
 
 [node name="hp_bar" type="ColorRect" parent="."]
 margin_left = -85.2687

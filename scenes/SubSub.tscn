@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://SubSub.gd" type="Script" id=1]
+[ext_resource path="res://sprites/subsub.png" type="Texture" id=2]
+[ext_resource path="res://scenes/hp_bar.gd" type="Script" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 20.4227
+height = 67.6547
+
+[node name="SubSub" type="Node2D"]
+
+[node name="Subsub" type="RigidBody2D" parent="." groups=[
+"vulnerable",
+]]
+gravity_scale = 0.0
+contacts_reported = 20
+contact_monitor = true
+script = ExtResource( 1 )
+
+[node name="subsub" type="Sprite" parent="Subsub"]
+position = Vector2( 1.51361, -3.88184 )
+scale = Vector2( 0.08, 0.08 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Subsub"]
+position = Vector2( 1.27852, -2.77013 )
+shape = SubResource( 1 )
+
+[node name="hp_bar" type="ColorRect" parent="."]
+margin_left = -84.5954
+margin_top = -40.6996
+margin_right = -9.59541
+margin_bottom = -35.6996
+color = Color( 0.196078, 0.72549, 0.0666667, 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+mother_name = "../Subsub"
+[connection signal="body_entered" from="Subsub" to="Subsub" method="_on_Submarine_body_entered"]

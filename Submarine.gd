@@ -64,7 +64,6 @@ func take_damage(amt):
 	var damage = amt - (greatest_speed * 0.8) 
 	hp = hp - damage
 	update_hp_bar()
-	print('hp remaining:', hp)
 	
 func attack(body):
 	body.take_damage(max(up_force.length(), down_force.length()))
@@ -72,12 +71,12 @@ func attack(body):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print('ready')
 	max_hp = hp
 	pass # Replace with function body.
 
 func parse_groups(body):
 	var _g = body.get_groups()
+	print('hit:', _g)
 	if _g.count('vulnerable') > 0:
 		attack(body)
 	if _g.count('heal') > 0:

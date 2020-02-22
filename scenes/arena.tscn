@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/Panel.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Bap.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://sprites/wall.jpg" type="Texture" id=5]
 [ext_resource path="res://scenes/Knife.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/Heal.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/SubSub.tscn" type="PackedScene" id=8]
 [ext_resource path="res://textures/Ocean_Floor2.png" type="Texture" id=9]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -150,10 +151,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="SubSub" parent="." instance=ExtResource( 8 )]
+position = Vector2( 652.723, 75.4207 )
+
+[node name="knife" parent="SubSub" instance=ExtResource( 6 )]
+position = Vector2( -54.4588, -103.731 )
+
 [node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 438.153, 191.269 )
 
 [node name="Submarine" parent="." instance=ExtResource( 4 )]
-position = Vector2( 220.723, 285.263 )
+position = Vector2( 520.308, 90.9382 )
 
 [node name="Knife" parent="." instance=ExtResource( 6 )]
 position = Vector2( 527.81, 284.275 )
@@ -305,7 +313,7 @@ shape = SubResource( 2 )
 texture = ExtResource( 5 )
 
 [node name="wall11" type="StaticBody2D" parent="walls"]
-position = Vector2( -55.7895, 55.8588 )
+position = Vector2( -50.3112, 24.4818 )
 rotation = -1.42353
 scale = Vector2( 1, 1 )
 __meta__ = {
@@ -319,7 +327,7 @@ shape = SubResource( 2 )
 texture = ExtResource( 5 )
 
 [node name="wall12" type="StaticBody2D" parent="walls"]
-position = Vector2( 65.1066, -135.907 )
+position = Vector2( 129.764, -140.573 )
 rotation = -0.522068
 __meta__ = {
 "_edit_group_": true
@@ -350,7 +358,7 @@ texture = ExtResource( 9 )
 position = Vector2( 305.368, -49.7379 )
 
 [node name="Heal2" parent="." instance=ExtResource( 7 )]
-position = Vector2( 305.368, -49.7379 )
+position = Vector2( 692.992, 71.1818 )
 
 [node name="Heal3" parent="." instance=ExtResource( 7 )]
 position = Vector2( 709.054, -151.527 )
@@ -365,6 +373,6 @@ position = Vector2( 587.601, 96.0057 )
 position = Vector2( 454.581, -151.527 )
 
 [node name="Heal4" parent="." instance=ExtResource( 7 )]
-position = Vector2( 653.533, -80.9687 )
+position = Vector2( 586.445, 45.1111 )
 [connection signal="pressed" from="Panel/Button" to="Panel" method="_on_Button_pressed"]
 [connection signal="pressed" from="Panel/Bap_button" to="Panel" method="_on_Bap_button_pressed"]

@@ -14,6 +14,8 @@ extents = Vector2( 23.5687, 44.031 )
 "vulnerable",
 ]]
 gravity_scale = 0.0
+contacts_reported = 20
+contact_monitor = true
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Submarine"]
@@ -46,3 +48,4 @@ node_b = NodePath("../knife")
 [node name="knife" parent="." instance=ExtResource( 3 )]
 position = Vector2( -13.6353, -45.08 )
 rotation = -0.746768
+[connection signal="body_entered" from="Submarine" to="Submarine" method="_on_Submarine_body_entered"]
