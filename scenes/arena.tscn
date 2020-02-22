@@ -1,7 +1,6 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://scenes/Panel.gd" type="Script" id=1]
-[ext_resource path="res://scenes/Bap.gd" type="Script" id=2]
+[ext_resource path="res://scenes/Spike.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Submarine.tscn" type="PackedScene" id=4]
 [ext_resource path="res://sprites/wall.jpg" type="Texture" id=5]
@@ -10,146 +9,10 @@
 [ext_resource path="res://scenes/SubSub.tscn" type="PackedScene" id=8]
 [ext_resource path="res://textures/Ocean_Floor2.png" type="Texture" id=9]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 139.481, 96.3823 )
 
 [node name="Node2D" type="Node2D"]
-
-[node name="Panel" type="Panel" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button" type="Button" parent="Panel"]
-margin_left = 220.0
-margin_top = 89.0
-margin_right = 353.0
-margin_bottom = 109.0
-text = "CLICK OR DIE"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Bap_button" type="Button" parent="Panel"]
-margin_left = 219.0
-margin_top = 117.0
-margin_right = 352.0
-margin_bottom = 137.0
-text = "BAP 'EM"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="Panel"]
-margin_left = 260.0
-margin_top = 69.0
-margin_right = 311.0
-margin_bottom = 83.0
-text = "King"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Blorbs" type="Panel" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Bap1" type="Label" parent="Blorbs" groups=[
-"baps",
-]]
-margin_left = 144.0
-margin_top = 154.0
-margin_right = 184.0
-margin_bottom = 168.0
-text = "not"
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Bap2" type="Label" parent="Blorbs" groups=[
-"baps",
-]]
-margin_left = 144.0
-margin_top = 154.0
-margin_right = 184.0
-margin_bottom = 168.0
-text = "not"
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Bap3" type="Label" parent="Blorbs" groups=[
-"baps",
-]]
-margin_left = 122.0
-margin_top = 203.0
-margin_right = 162.0
-margin_bottom = 217.0
-text = "not"
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Bap4" type="Label" parent="Blorbs" groups=[
-"baps",
-]]
-margin_left = 399.0
-margin_top = 143.0
-margin_right = 439.0
-margin_bottom = 157.0
-text = "not"
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Bap5" type="Label" parent="Blorbs" groups=[
-"baps",
-]]
-margin_left = 351.0
-margin_top = 177.0
-margin_right = 391.0
-margin_bottom = 191.0
-text = "not"
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Bap6" type="Label" parent="Blorbs" groups=[
-"baps",
-]]
-margin_left = 212.0
-margin_top = 177.0
-margin_right = 252.0
-margin_bottom = 191.0
-text = "not"
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Bap7" type="Label" parent="Blorbs" groups=[
-"baps",
-]]
-margin_left = 256.0
-margin_top = 149.0
-margin_right = 296.0
-margin_bottom = 163.0
-text = "not"
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="SubSub" parent="." instance=ExtResource( 8 )]
 position = Vector2( 652.723, 75.4207 )
@@ -171,13 +34,12 @@ position = Vector2( 527.81, 284.275 )
 [node name="wall" type="StaticBody2D" parent="walls"]
 position = Vector2( 228.073, -244.815 )
 rotation = -0.433711
-scale = Vector2( 1, 1 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="walls/wall"]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="walls/wall"]
 texture = ExtResource( 5 )
@@ -190,7 +52,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="walls/wall2"]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="walls/wall2"]
 texture = ExtResource( 5 )
@@ -203,7 +65,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="walls/wall3"]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="walls/wall3"]
 texture = ExtResource( 5 )
@@ -216,7 +78,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="walls/wall4"]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="walls/wall4"]
 texture = ExtResource( 5 )
@@ -229,7 +91,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="walls/wall13"]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="walls/wall13"]
 texture = ExtResource( 5 )
@@ -242,7 +104,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="walls/wall5"]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="walls/wall5"]
 texture = ExtResource( 5 )
@@ -255,7 +117,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="walls/wall6"]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="walls/wall6"]
 texture = ExtResource( 5 )
@@ -268,7 +130,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="walls/wall7"]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="walls/wall7"]
 texture = ExtResource( 5 )
@@ -281,7 +143,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="walls/wall8"]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="walls/wall8"]
 texture = ExtResource( 5 )
@@ -294,7 +156,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="walls/wall9"]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="walls/wall9"]
 texture = ExtResource( 5 )
@@ -307,7 +169,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="walls/wall10"]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="walls/wall10"]
 texture = ExtResource( 5 )
@@ -315,13 +177,12 @@ texture = ExtResource( 5 )
 [node name="wall11" type="StaticBody2D" parent="walls"]
 position = Vector2( -50.3112, 24.4818 )
 rotation = -1.42353
-scale = Vector2( 1, 1 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="walls/wall11"]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="walls/wall11"]
 texture = ExtResource( 5 )
@@ -334,7 +195,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="walls/wall12"]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="walls/wall12"]
 texture = ExtResource( 5 )
@@ -374,5 +235,15 @@ position = Vector2( 454.581, -151.527 )
 
 [node name="Heal4" parent="." instance=ExtResource( 7 )]
 position = Vector2( 586.445, 45.1111 )
-[connection signal="pressed" from="Panel/Button" to="Panel" method="_on_Button_pressed"]
-[connection signal="pressed" from="Panel/Bap_button" to="Panel" method="_on_Bap_button_pressed"]
+
+[node name="Spike" parent="." instance=ExtResource( 1 )]
+position = Vector2( 313.351, 249.074 )
+
+[node name="Spike3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 333.437, 96.4156 )
+
+[node name="Spike4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 731.152, 257.108 )
+
+[node name="Spike2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 204.74, 129.122 )
