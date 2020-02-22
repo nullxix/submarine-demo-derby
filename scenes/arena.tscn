@@ -1,23 +1,16 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/Panel.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Bap.gd" type="Script" id=2]
-[ext_resource path="res://sprites/cutesub.png" type="Texture" id=3]
-[ext_resource path="res://scenes/Player.gd" type="Script" id=4]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Submarine.tscn" type="PackedScene" id=4]
 [ext_resource path="res://sprites/wall.jpg" type="Texture" id=5]
-[ext_resource path="res://materials/submare.res" type="PhysicsMaterial" id=6]
-[ext_resource path="res://sprites/sprite.png" type="Texture" id=7]
-[ext_resource path="res://Submarine.gd" type="Script" id=8]
-
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 12.6377
-height = 52.7025
+[ext_resource path="res://scenes/Knife.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/Heal.tscn" type="PackedScene" id=7]
+[ext_resource path="res://textures/Ocean_Floor2.png" type="Texture" id=9]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 139.481, 96.3823 )
-
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 23.5687, 44.031 )
 
 [node name="Node2D" type="Node2D"]
 
@@ -157,28 +150,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Player" type="RigidBody2D" parent="."]
-position = Vector2( 389.711, 295.531 )
-mass = 1.24898
-physics_material_override = ExtResource( 6 )
-gravity_scale = 0.0
-contacts_reported = 20
-contact_monitor = true
-angular_damp = 0.5
-script = ExtResource( 4 )
+[node name="Player" parent="." instance=ExtResource( 3 )]
 
-[node name="Sprite" type="Sprite" parent="Player"]
-position = Vector2( 10, 0 )
-rotation = 1.5708
-scale = Vector2( 0.156923, 0.157568 )
-texture = ExtResource( 3 )
+[node name="Submarine" parent="." instance=ExtResource( 4 )]
+position = Vector2( 220.723, 285.263 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-rotation = -3.14159
-shape = SubResource( 1 )
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-current = true
+[node name="Knife" parent="." instance=ExtResource( 6 )]
+position = Vector2( 527.81, 284.275 )
 
 [node name="walls" type="Node" parent="."]
 
@@ -353,17 +331,40 @@ shape = SubResource( 2 )
 [node name="Sprite" type="Sprite" parent="walls/wall12"]
 texture = ExtResource( 5 )
 
-[node name="Submarine" type="RigidBody2D" parent="."]
-position = Vector2( 432.6, 56.3648 )
-rotation = 2.54279
-script = ExtResource( 8 )
+[node name="GUI" type="Node" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Submarine"]
-shape = SubResource( 3 )
+[node name="Health" type="Label" parent="GUI"]
+margin_right = 40.0
+margin_bottom = 14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Sprite" type="Sprite" parent="Submarine"]
-scale = Vector2( 0.1, 0.1 )
-texture = ExtResource( 7 )
+[node name="Ocean_Floor2" type="Sprite" parent="."]
+visible = false
+position = Vector2( 471.205, 211.755 )
+z_index = -10
+texture = ExtResource( 9 )
+
+[node name="Heal" parent="." instance=ExtResource( 7 )]
+position = Vector2( 305.368, -49.7379 )
+
+[node name="Heal2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 305.368, -49.7379 )
+
+[node name="Heal3" parent="." instance=ExtResource( 7 )]
+position = Vector2( 709.054, -151.527 )
+
+[node name="Heal5" parent="." instance=ExtResource( 7 )]
+position = Vector2( 145.744, 35.8575 )
+
+[node name="Heal6" parent="." instance=ExtResource( 7 )]
+position = Vector2( 587.601, 96.0057 )
+
+[node name="Heal7" parent="." instance=ExtResource( 7 )]
+position = Vector2( 454.581, -151.527 )
+
+[node name="Heal4" parent="." instance=ExtResource( 7 )]
+position = Vector2( 653.533, -80.9687 )
 [connection signal="pressed" from="Panel/Button" to="Panel" method="_on_Button_pressed"]
 [connection signal="pressed" from="Panel/Bap_button" to="Panel" method="_on_Bap_button_pressed"]
-[connection signal="body_entered" from="Player" to="Player" method="_on_Submarine_body_entered"]
