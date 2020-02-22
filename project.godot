@@ -8,14 +8,20 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "RigidBody2D",
+"class": "Submarine",
+"language": "GDScript",
+"path": "res://Submarine.gd"
+} ]
 _global_script_class_icons={
-
+"Submarine": ""
 }
 
 [application]
 
 config/name="submarine-demo-derby"
+run/main_scene="res://scenes/arena.tscn"
 config/icon="res://icon.png"
 
 [rendering]

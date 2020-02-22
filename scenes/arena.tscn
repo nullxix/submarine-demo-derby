@@ -1,0 +1,369 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://scenes/Panel.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Bap.gd" type="Script" id=2]
+[ext_resource path="res://sprites/cutesub.png" type="Texture" id=3]
+[ext_resource path="res://scenes/Player.gd" type="Script" id=4]
+[ext_resource path="res://sprites/wall.jpg" type="Texture" id=5]
+[ext_resource path="res://materials/submare.res" type="PhysicsMaterial" id=6]
+[ext_resource path="res://sprites/sprite.png" type="Texture" id=7]
+[ext_resource path="res://Submarine.gd" type="Script" id=8]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 12.6377
+height = 52.7025
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 139.481, 96.3823 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 23.5687, 44.031 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Panel" type="Panel" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="Panel"]
+margin_left = 220.0
+margin_top = 89.0
+margin_right = 353.0
+margin_bottom = 109.0
+text = "CLICK OR DIE"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bap_button" type="Button" parent="Panel"]
+margin_left = 219.0
+margin_top = 117.0
+margin_right = 352.0
+margin_bottom = 137.0
+text = "BAP 'EM"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel"]
+margin_left = 260.0
+margin_top = 69.0
+margin_right = 311.0
+margin_bottom = 83.0
+text = "King"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Blorbs" type="Panel" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bap1" type="Label" parent="Blorbs" groups=[
+"baps",
+]]
+margin_left = 144.0
+margin_top = 154.0
+margin_right = 184.0
+margin_bottom = 168.0
+text = "not"
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bap2" type="Label" parent="Blorbs" groups=[
+"baps",
+]]
+margin_left = 144.0
+margin_top = 154.0
+margin_right = 184.0
+margin_bottom = 168.0
+text = "not"
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bap3" type="Label" parent="Blorbs" groups=[
+"baps",
+]]
+margin_left = 122.0
+margin_top = 203.0
+margin_right = 162.0
+margin_bottom = 217.0
+text = "not"
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bap4" type="Label" parent="Blorbs" groups=[
+"baps",
+]]
+margin_left = 399.0
+margin_top = 143.0
+margin_right = 439.0
+margin_bottom = 157.0
+text = "not"
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bap5" type="Label" parent="Blorbs" groups=[
+"baps",
+]]
+margin_left = 351.0
+margin_top = 177.0
+margin_right = 391.0
+margin_bottom = 191.0
+text = "not"
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bap6" type="Label" parent="Blorbs" groups=[
+"baps",
+]]
+margin_left = 212.0
+margin_top = 177.0
+margin_right = 252.0
+margin_bottom = 191.0
+text = "not"
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bap7" type="Label" parent="Blorbs" groups=[
+"baps",
+]]
+margin_left = 256.0
+margin_top = 149.0
+margin_right = 296.0
+margin_bottom = 163.0
+text = "not"
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player" type="RigidBody2D" parent="."]
+position = Vector2( 389.711, 295.531 )
+mass = 1.24898
+physics_material_override = ExtResource( 6 )
+gravity_scale = 0.0
+contacts_reported = 20
+contact_monitor = true
+angular_damp = 0.5
+script = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="Player"]
+position = Vector2( 10, 0 )
+rotation = 1.5708
+scale = Vector2( 0.156923, 0.157568 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+rotation = -3.14159
+shape = SubResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+current = true
+
+[node name="walls" type="Node" parent="."]
+
+[node name="wall" type="StaticBody2D" parent="walls"]
+position = Vector2( 228.073, -244.815 )
+rotation = -0.433711
+scale = Vector2( 1, 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/wall"]
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="walls/wall"]
+texture = ExtResource( 5 )
+
+[node name="wall2" type="StaticBody2D" parent="walls"]
+position = Vector2( 512.799, -317.081 )
+rotation = -0.0432424
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/wall2"]
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="walls/wall2"]
+texture = ExtResource( 5 )
+
+[node name="wall3" type="StaticBody2D" parent="walls"]
+position = Vector2( 790.299, -279.503 )
+rotation = 0.317323
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/wall3"]
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="walls/wall3"]
+texture = ExtResource( 5 )
+
+[node name="wall4" type="StaticBody2D" parent="walls"]
+position = Vector2( 961.405, 68.3654 )
+rotation = 1.57669
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/wall4"]
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="walls/wall4"]
+texture = ExtResource( 5 )
+
+[node name="wall13" type="StaticBody2D" parent="walls"]
+position = Vector2( 928.055, -156.752 )
+rotation = 1.14981
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/wall13"]
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="walls/wall13"]
+texture = ExtResource( 5 )
+
+[node name="wall5" type="StaticBody2D" parent="walls"]
+position = Vector2( 936.392, 322.664 )
+rotation = -1.34714
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/wall5"]
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="walls/wall5"]
+texture = ExtResource( 5 )
+
+[node name="wall6" type="StaticBody2D" parent="walls"]
+position = Vector2( 819.665, 543.612 )
+rotation = -0.784622
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/wall6"]
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="walls/wall6"]
+texture = ExtResource( 5 )
+
+[node name="wall7" type="StaticBody2D" parent="walls"]
+position = Vector2( 594.548, 635.327 )
+rotation = -0.169847
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/wall7"]
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="walls/wall7"]
+texture = ExtResource( 5 )
+
+[node name="wall8" type="StaticBody2D" parent="walls"]
+position = Vector2( 319.405, 647.833 )
+rotation = 0.108248
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/wall8"]
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="walls/wall8"]
+texture = ExtResource( 5 )
+
+[node name="wall9" type="StaticBody2D" parent="walls"]
+position = Vector2( 65.1066, 535.275 )
+rotation = 0.689224
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/wall9"]
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="walls/wall9"]
+texture = ExtResource( 5 )
+
+[node name="wall10" type="StaticBody2D" parent="walls"]
+position = Vector2( -59.9583, 301.82 )
+rotation = 1.40059
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/wall10"]
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="walls/wall10"]
+texture = ExtResource( 5 )
+
+[node name="wall11" type="StaticBody2D" parent="walls"]
+position = Vector2( -55.7895, 55.8588 )
+rotation = -1.42353
+scale = Vector2( 1, 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/wall11"]
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="walls/wall11"]
+texture = ExtResource( 5 )
+
+[node name="wall12" type="StaticBody2D" parent="walls"]
+position = Vector2( 65.1066, -135.907 )
+rotation = -0.522068
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/wall12"]
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="walls/wall12"]
+texture = ExtResource( 5 )
+
+[node name="Submarine" type="RigidBody2D" parent="."]
+position = Vector2( 432.6, 56.3648 )
+rotation = 2.54279
+script = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Submarine"]
+shape = SubResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="Submarine"]
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 7 )
+[connection signal="pressed" from="Panel/Button" to="Panel" method="_on_Button_pressed"]
+[connection signal="pressed" from="Panel/Bap_button" to="Panel" method="_on_Bap_button_pressed"]
+[connection signal="body_entered" from="Player" to="Player" method="_on_Submarine_body_entered"]
