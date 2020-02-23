@@ -3,7 +3,7 @@
 [ext_resource path="res://Torpedo.gd" type="Script" id=1]
 [ext_resource path="res://sprites/torpedo_final.png" type="Texture" id=2]
 
-[sub_resource type="PhysicsMaterial" id=1]
+[sub_resource type="PhysicsMaterial" id=3]
 friction = -1.0
 bounce = 20.0
 
@@ -12,12 +12,13 @@ radius = 209.919
 height = 66.5847
 
 [node name="Torpedo" type="RigidBody2D"]
-physics_material_override = SubResource( 1 )
+physics_material_override = SubResource( 3 )
 gravity_scale = 0.0
 contacts_reported = 2
 contact_monitor = true
 script = ExtResource( 1 )
 attack_power = 4000
+who_is = "protaganist"
 speed = 120
 
 [node name="knife" type="Sprite" parent="."]

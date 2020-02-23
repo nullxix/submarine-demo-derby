@@ -79,27 +79,29 @@ func spawn_explosion(body):
 	
 func heal_self(amt):
 	hp = hp + amt
+	if hp > max_hp:
+		hp = max_hp
 	update_hp_bar_good()
 	
-func take_damage(amt):
+func take_damage(amt, who_is):
 	var greatest_speed = max(up_force.length(), down_force.length())
 	var damage = amt - (greatest_speed * 0.8) 
 	hp = hp - damage
 	if(hp < 0):
+		if who_is == 'protaganist':
+			Ator.point()
 		die()
 	update_hp_bar()
 	
 func attack(body):
 	spawn_explosion(body)
-	body.take_damage(max(up_force.length(), down_force.length()))
+	body.take_damage(max(up_force.length(), down_force.length()), player_id)
 	pass
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Ator = AtorMaker.new()
 	var man = get_tree().get_nodes_in_group("respawnmanager")
-	print('the man')
-	print(man[0])
 		
 	max_hp = hp
 	pass # Replace with function body.
@@ -109,7 +111,7 @@ func parse_groups(body):
 	if _g.count('vulnerable') > 0:
 		attack(body)
 	if _g.count('heal') > 0:
-		heal_self(100)
+		heal_self(55000)
 		body.free()
 	pass
 

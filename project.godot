@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://FireTorpedo.gd"
 }, {
+"base": "PhysicsBody2D",
+"class": "PhysicsAttacker",
+"language": "GDScript",
+"path": "res://PhysicsAttacker.gd"
+}, {
 "base": "RigidBody2D",
 "class": "Submarine",
 "language": "GDScript",
@@ -33,6 +38,7 @@ _global_script_class_icons={
 "AtorInator": "",
 "Attacker": "",
 "FireTorpedo": "",
+"PhysicsAttacker": "",
 "Submarine": ""
 }
 

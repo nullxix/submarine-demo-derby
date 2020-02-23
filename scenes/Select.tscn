@@ -1,18 +1,35 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/Select.gd" type="Script" id=1]
+[ext_resource path="res://sprites/SELECTFINALLALAL.png" type="Texture" id=2]
+[ext_resource path="res://sprites/TheSubFinal.png" type="Texture" id=3]
+[ext_resource path="res://scenes/BeginSingleButton.gd" type="Script" id=4]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 107.38
 
 [node name="Select" type="Node2D"]
 position = Vector2( -242.088, -168.309 )
 script = ExtResource( 1 )
 
-[node name="Button" type="Button" parent="."]
-margin_left = 618.823
-margin_top = 456.436
-margin_right = 680.823
-margin_bottom = 476.436
-text = "The Sub"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 783.597, 319.364 )
+rotation = -1.58927
+scale = Vector2( 0.139581, 0.139581 )
+texture = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 807.13, 587.184 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Area2D"]
+position = Vector2( 806.359, 589.915 )
+rotation = -1.40061
+scale = Vector2( 0.0831888, 0.0831888 )
+texture = ExtResource( 3 )
+script = ExtResource( 4 )
+[connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="Area2D/Sprite" method="_on_Area2D_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="Area2D/Sprite" method="_on_Area2D_mouse_exited"]

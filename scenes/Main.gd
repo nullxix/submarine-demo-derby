@@ -16,6 +16,10 @@ func _ready():
 #func _process(delta):
 #	pass
 
+func _on_Area2D_input_event(viewport, event, shape_idx):
+	if event is InputEventMouseButton \
+	and event.is_pressed():
+		self.on_click()
 
-func _on_Button_pressed():
+func on_click():
 	get_tree().change_scene_to(select_scene)

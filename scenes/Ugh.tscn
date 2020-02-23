@@ -1,0 +1,29 @@
+[gd_scene format=2]
+
+[node name="MarginContainer" type="MarginContainer"]
+anchor_right = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 136.0
+margin_bottom = 18.0
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 2.0
+margin_right = 136.0
+margin_bottom = 16.0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+margin_right = 136.0
+margin_bottom = 14.0
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/MarginContainer"]
+margin_right = 136.0
+margin_bottom = 14.0
+text = "YOU HAVE MA POINT"
+__meta__ = {
+"_edit_use_anchors_": false
+}

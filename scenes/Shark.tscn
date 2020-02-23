@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/Shark.gd" type="Script" id=1]
+[ext_resource path="res://sprites/Shark Final.png" type="Texture" id=2]
+[ext_resource path="res://scenes/hp_bar.gd" type="Script" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 16.9833
+height = 21.4309
+
+[node name="Shark" type="Node2D"]
+
+[node name="SharkBody" type="RigidBody2D" parent="." groups=[
+"enemy",
+"vulnerable",
+]]
+gravity_scale = 0.0
+contacts_reported = 20
+contact_monitor = true
+script = ExtResource( 1 )
+attached_members = [ "../hp_bar" ]
+
+[node name="subsub" type="Sprite" parent="SharkBody"]
+position = Vector2( -3.56151, -4.83343 )
+rotation = -0.401886
+scale = Vector2( 0.08, 0.08 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SharkBody"]
+visible = false
+position = Vector2( 1.2785, -9.43122 )
+shape = SubResource( 1 )
+
+[node name="hp_bar" type="ColorRect" parent="."]
+margin_left = -84.5954
+margin_top = -40.6996
+margin_right = -9.59541
+margin_bottom = -35.6996
+rect_rotation = -0.108166
+color = Color( 0.72549, 0.45098, 0.0666667, 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+mother_name = "../SharkBody"
+hurt_color = Color( 0.756863, 0.0666667, 0.376471, 1 )
+good_color = Color( 0.831373, 0.937255, 0.0862745, 1 )
+[connection signal="body_entered" from="SharkBody" to="SharkBody" method="_on_Submarine_body_entered"]

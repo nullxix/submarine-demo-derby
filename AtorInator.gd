@@ -11,6 +11,7 @@ var player
 var player_registered = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	player = get_tree().get_nodes_in_group('protaganist')
 	pass # Replace with function body.
 
 func spawn_explosion(pos, parent, vary = true):
@@ -25,15 +26,14 @@ func spawn_explosion(pos, parent, vary = true):
 	parent.add_child(x)
 	x.global_position = x_pos
 
+func point():
+	pass
+		
 func get_player():
-	if player_registered:
-		return player
-	else:
-		return false
+	return 
 
 func register_player(p):
-	player = p
-	player_registered = true
+	pass
 	
 func spawn_bubble(pos, parent, vary = true):
 	var b_pos = pos

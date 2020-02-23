@@ -3,8 +3,14 @@ extends Submarine
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var torpedo = preload('res://scenes/Torpedo.tscn')
+signal booyah
 
+var torpedo = preload('res://scenes/Torpedo.tscn')
+var audio
+
+func point():
+	print('POINT')
+	emit_signal("booyah")
 # Called when the node enters the scene tree for the first time.
 func fire_torpedo():
 	var torpedo_i = torpedo.instance()
@@ -15,10 +21,11 @@ func fire_torpedo():
 	Ator.spawn_bubble(tube.get_global_position(), get_parent())
 	torpedo_i.global_position = tube.get_global_position()
 	torpedo_i.rotation = rotation + 90
-	print(rotation, ' : ', torpedo_i.rotation)
-	
+	$Pew.play()
 func _ready():
-	Ator.register_player(get_tree().get_root())
+	audio = get_node("AudioOut")
+	Ator.register_player(self)
+	apply_impulse(Vector2(0,0),Vector2(10, -50))
 	pass
 	
 func use_special():
@@ -76,4 +83,5 @@ func get_input():
 	space()
 
 func _physics_process(delta):
+	hp = hp + 1
 	get_input()

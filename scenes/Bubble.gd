@@ -32,7 +32,7 @@ func _ready():
 	self_destruct()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+# Called every fraprinte. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	rng.randomize()
 	var should_i = rng.randf_range(-1,1)

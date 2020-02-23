@@ -7,6 +7,7 @@ class_name Attacker
 # var b = "text"
 export var attack_power = 2000
 export var base_attack_power = 2000
+export var who_is = 'nobody'
 var Ator = AtorInator.new()
 
 func spawn_explosion(body):
@@ -19,7 +20,7 @@ func spawn_explosion(body):
 func attack(body, damage):
 	var body_groups = body.get_groups()
 	if body_groups.count('vulnerable') > 0:
-		body.take_damage(damage)
+		body.take_damage(damage, who_is)
 		spawn_explosion(body)
 
 # Called when the node enters the scene tree for the first time.

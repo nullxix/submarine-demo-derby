@@ -5,8 +5,8 @@ extends Node2D
 # var a = 2
 # var b = "text"
 var sprite
-var grow_time = 0.2
-var shrink_time = 0.2
+var grow_time = 0.3
+var shrink_time = 0.3
 var max_size = 0.1
 var start_size = 0
 var g_direction = "grow"
@@ -32,9 +32,9 @@ func shrink(delta):
 	
 func _ready():
 	rng.randomize()
-	grow_time = grow_time + rng.randf_range(-0.05, 0.05)
+	grow_time = grow_time + rng.randf_range(-0.05, 0.15)
 	rng.randomize()
-	shrink_time = shrink_time + rng.randf_range(-0.05, 0.05)
+	shrink_time = shrink_time + rng.randf_range(-0.05, 0.15)
 	rng.randomize()
 	max_size = max_size + rng.randf_range(-0.07, 0.07)
 	rng.randomize()

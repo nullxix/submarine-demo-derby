@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://SubSub.gd" type="Script" id=1]
+[ext_resource path="res://scenes/EnemyBasic.gd" type="Script" id=1]
 [ext_resource path="res://sprites/subsub.png" type="Texture" id=2]
 [ext_resource path="res://scenes/hp_bar.gd" type="Script" id=3]
 
@@ -11,6 +11,7 @@ height = 67.6547
 [node name="SubSub" type="Node2D"]
 
 [node name="Subsub" type="RigidBody2D" parent="." groups=[
+"enemy",
 "vulnerable",
 ]]
 gravity_scale = 0.0

@@ -20,3 +20,9 @@ func _ready():
 func _on_Button_pressed():
 	get_tree().change_scene_to(arena_scene)
 	pass # Replace with function body.
+
+
+func _on_Area2D_input_event(viewport, event, shape_idx):
+	if event is InputEventMouseButton \
+	and event.is_pressed():
+		self._on_Button_pressed()
