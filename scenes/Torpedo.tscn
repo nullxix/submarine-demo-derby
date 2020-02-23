@@ -1,18 +1,18 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Torpedo.gd" type="Script" id=1]
-[ext_resource path="res://sprites/knife.png" type="Texture" id=2]
+[ext_resource path="res://sprites/torpedo_final.png" type="Texture" id=2]
 
-[sub_resource type="PhysicsMaterial" id=2]
+[sub_resource type="PhysicsMaterial" id=1]
 friction = -1.0
 bounce = 20.0
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 103.921
-height = 390.43
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 209.919
+height = 66.5847
 
 [node name="Torpedo" type="RigidBody2D"]
-physics_material_override = SubResource( 2 )
+physics_material_override = SubResource( 1 )
 gravity_scale = 0.0
 contacts_reported = 2
 contact_monitor = true
@@ -21,13 +21,13 @@ attack_power = 4000
 speed = 120
 
 [node name="knife" type="Sprite" parent="."]
-rotation = 0.785398
+rotation = 1.2777
 scale = Vector2( 0.05, 0.05 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 11.6002, 0.986827 )
+position = Vector2( 5.73101, -0.21369 )
 rotation = 1.5708
 scale = Vector2( 0.05, 0.05 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 [connection signal="body_entered" from="." to="." method="_on_Attacker_body_entered"]

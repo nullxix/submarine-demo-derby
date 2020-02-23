@@ -10,11 +10,15 @@ func fire_torpedo():
 	var torpedo_i = torpedo.instance()
 	var tube = get_node("TorpedoTube")
 	get_parent().add_child(torpedo_i)
+	Ator.spawn_bubble(tube.get_global_position(), get_parent())
+	Ator.spawn_bubble(tube.get_global_position(), get_parent())
+	Ator.spawn_bubble(tube.get_global_position(), get_parent())
 	torpedo_i.global_position = tube.get_global_position()
 	torpedo_i.rotation = rotation + 90
 	print(rotation, ' : ', torpedo_i.rotation)
 	
 func _ready():
+	Ator.register_player(get_tree().get_root())
 	pass
 	
 func use_special():

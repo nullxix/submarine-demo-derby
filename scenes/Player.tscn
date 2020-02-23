@@ -37,7 +37,6 @@ shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true
-zoom = Vector2( 0.5, 0.5 )
 
 [node name="TorpedoTube" type="Position2D" parent="Player"]
 position = Vector2( -52.4158, 28.5588 )

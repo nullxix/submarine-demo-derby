@@ -39,7 +39,7 @@ _global_script_class_icons={
 [application]
 
 config/name="submarine-demo-derby"
-run/main_scene="res://scenes/arena.tscn"
+run/main_scene="res://scenes/Main.tscn"
 config/icon="res://icon.png"
 
 [rendering]
