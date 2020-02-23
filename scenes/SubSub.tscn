@@ -17,6 +17,7 @@ gravity_scale = 0.0
 contacts_reported = 20
 contact_monitor = true
 script = ExtResource( 1 )
+attached_members = [ "../hp_bar" ]
 
 [node name="subsub" type="Sprite" parent="Subsub"]
 position = Vector2( 1.51361, -3.88184 )

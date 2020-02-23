@@ -9,10 +9,20 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "AtorInator",
+"language": "GDScript",
+"path": "res://AtorInator.gd"
+}, {
 "base": "RigidBody2D",
 "class": "Attacker",
 "language": "GDScript",
 "path": "res://Attacker.gd"
+}, {
+"base": "Node",
+"class": "FireTorpedo",
+"language": "GDScript",
+"path": "res://FireTorpedo.gd"
 }, {
 "base": "RigidBody2D",
 "class": "Submarine",
@@ -20,7 +30,9 @@ _global_script_classes=[ {
 "path": "res://Submarine.gd"
 } ]
 _global_script_class_icons={
+"AtorInator": "",
 "Attacker": "",
+"FireTorpedo": "",
 "Submarine": ""
 }
 

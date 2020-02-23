@@ -1,6 +1,4 @@
 extends RigidBody2D
-signal hit
-
 class_name Submarine
 
 # Declare member variables here. Examples:
@@ -9,15 +7,19 @@ class_name Submarine
 
 export var speed = 1000
 export var turn = 5000
+export (String) var player_id = 'nobody'
 export (float) var marx_factor = 0.01
 export (float) var marx_factor_end = 0
 export (float) var reverse_factor = -0.5
 export (float) var rotation_speed = 500
+export (Array) var attached_members = Array()
 export var hp_bar_size = 75
 var up_force = Vector2()
 var down_force = Vector2()
 export (float) var hp = 20000
 var max_hp
+var AtorMaker = preload("res://AtorInator.gd")
+var Ator
 
 func update_hp_bar():
 	var bar = get_node('../hp_bar')
@@ -27,7 +29,10 @@ func update_hp_bar_good():
 	var bar = get_node('../hp_bar')
 	bar.update_hp_bar_good(hp/max_hp)
 	
-
+func initiate_respawn(id):
+	var man = get_tree().get_nodes_in_group("respawnmanager")[0]
+	man.initiate_respawn(id)
+	
 func start_force(which, factor):
 	apply_impulse(Vector2(0,0), Vector2(0, speed * marx_factor * factor).rotated(rotation))
 	var the_force = Vector2(0, speed * factor).rotated(rotation)
@@ -55,6 +60,23 @@ func update_force(which, factor):
 	start_force(which, factor)
 	pass	
 
+func kill_attached_members():
+	for member in attached_members:
+		get_node(member).queue_free()
+	
+func die():
+	kill_attached_members()
+	initiate_respawn(player_id)
+	queue_free()
+	
+func spawn_explosion(body):
+	var x_spot
+	var enemy_spot = body.get_global_position()
+	var u_spot = get_global_position()
+	x_spot = (enemy_spot + u_spot) / 2
+	Ator.spawn_explosion(x_spot, get_parent())
+	
+	
 func heal_self(amt):
 	hp = hp + amt
 	update_hp_bar_good()
@@ -63,20 +85,27 @@ func take_damage(amt):
 	var greatest_speed = max(up_force.length(), down_force.length())
 	var damage = amt - (greatest_speed * 0.8) 
 	hp = hp - damage
+	if(hp < 0):
+		die()
 	update_hp_bar()
 	
 func attack(body):
+	spawn_explosion(body)
 	body.take_damage(max(up_force.length(), down_force.length()))
 	pass
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Ator = AtorMaker.new()
+	var man = get_tree().get_nodes_in_group("respawnmanager")
+	print('the man')
+	print(man[0])
+		
 	max_hp = hp
 	pass # Replace with function body.
 
 func parse_groups(body):
 	var _g = body.get_groups()
-	print('hit:', _g)
 	if _g.count('vulnerable') > 0:
 		attack(body)
 	if _g.count('heal') > 0:
@@ -86,7 +115,6 @@ func parse_groups(body):
 
 func _on_Submarine_body_entered(body):
 	parse_groups(body)
-	emit_signal("hit")
 
 
 func get_attacked():

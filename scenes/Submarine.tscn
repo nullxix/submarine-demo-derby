@@ -17,6 +17,7 @@ gravity_scale = 0.0
 contacts_reported = 20
 contact_monitor = true
 script = ExtResource( 2 )
+attached_members = [ "../PinJoint2D", "../knife", "../hp_bar" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Submarine"]
 shape = SubResource( 1 )

@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/Spike.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/RespawnManager.gd" type="Script" id=2]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Submarine.tscn" type="PackedScene" id=4]
 [ext_resource path="res://sprites/wall.jpg" type="Texture" id=5]
@@ -8,26 +9,26 @@
 [ext_resource path="res://scenes/Heal.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/SubSub.tscn" type="PackedScene" id=8]
 [ext_resource path="res://textures/Ocean_Floor2.png" type="Texture" id=9]
+[ext_resource path="res://scenes/Arena.gd" type="Script" id=10]
+[ext_resource path="res://textures/Underwater_Cave.png" type="Texture" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 139.481, 96.3823 )
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource( 10 )
 
 [node name="SubSub" parent="." instance=ExtResource( 8 )]
 position = Vector2( 652.723, 75.4207 )
 
 [node name="knife" parent="SubSub" instance=ExtResource( 6 )]
-position = Vector2( -54.4588, -103.731 )
+position = Vector2( 75.808, -60.3087 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 438.153, 191.269 )
 
 [node name="Submarine" parent="." instance=ExtResource( 4 )]
 position = Vector2( 520.308, 90.9382 )
-
-[node name="Knife" parent="." instance=ExtResource( 6 )]
-position = Vector2( 527.81, 284.275 )
 
 [node name="walls" type="Node" parent="."]
 
@@ -175,7 +176,7 @@ shape = SubResource( 1 )
 texture = ExtResource( 5 )
 
 [node name="wall11" type="StaticBody2D" parent="walls"]
-position = Vector2( -50.3112, 24.4818 )
+position = Vector2( -54.1426, 67.9041 )
 rotation = -1.42353
 __meta__ = {
 "_edit_group_": true
@@ -199,15 +200,6 @@ shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="walls/wall12"]
 texture = ExtResource( 5 )
-
-[node name="GUI" type="Node" parent="."]
-
-[node name="Health" type="Label" parent="GUI"]
-margin_right = 40.0
-margin_bottom = 14.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Ocean_Floor2" type="Sprite" parent="."]
 visible = false
@@ -247,3 +239,16 @@ position = Vector2( 731.152, 257.108 )
 
 [node name="Spike2" parent="." instance=ExtResource( 1 )]
 position = Vector2( 204.74, 129.122 )
+
+[node name="RespawnManager" type="Node2D" parent="." groups=[
+"manager",
+"respawnmanager",
+]]
+script = ExtResource( 2 )
+
+[node name="Underwater_Cave" type="Sprite" parent="."]
+position = Vector2( 406.448, 150.012 )
+rotation = -0.195637
+scale = Vector2( 1.27168, 1.36492 )
+z_index = -20
+texture = ExtResource( 11 )
